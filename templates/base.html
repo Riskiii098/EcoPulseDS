@@ -99,18 +99,38 @@
         .alert-warning { border-color: #f59e0b; color: #fcd34d; }
         .alert-success { border-color: #10b981; color: #6ee7b7; }
         .alert-info { border-color: #3b82f6; color: #93c5fd; }
+        
+        /* Responsive Mobile Design */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar {
+                width: 100%; height: auto; position: relative;
+                padding: 1rem; border-right: none; border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .content { margin-left: 0; padding: 1.5rem 1rem; width: 100%; }
+            .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+            .sidebar h2 { font-size: 1.5rem; margin-bottom: 0.2rem; }
+            .sidebar hr, .sidebar span.nav-title, .sidebar div.footer-text { display: none; }
+            .nav-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
+            .nav-link { margin-bottom: 0; padding: 8px 12px; font-size: 0.9rem; }
+            .page-title { font-size: 1.8rem; }
+            .card { padding: 20px; }
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <h2 style="color: var(--primary-hover); margin-bottom: 1rem; font-size: 1.8rem; text-align:center; font-weight: 800;">Eco-Pulse</h2>
         <hr style="margin: 1rem 0;">
-        <span style="font-size: 0.75rem; color: #6ee7b7; margin-bottom: 0.75rem; display: block; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; opacity:0.8;">Navigasi</span>
-        <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Beranda</a>
-        <a href="/dashboard" class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard Area</a>
-        <a href="/simulator" class="nav-link {% if request.path == '/simulator' %}active{% endif %}">ML Simulator</a>
+        <span class="nav-title" style="font-size: 0.75rem; color: #6ee7b7; margin-bottom: 0.75rem; display: block; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; opacity:0.8;">Navigasi</span>
+        <div class="nav-container">
+            <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Beranda</a>
+            <a href="/dashboard" class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard Area</a>
+            <a href="/simulator" class="nav-link {% if request.path == '/simulator' %}active{% endif %}">ML Simulator</a>
+        </div>
         <hr style="margin-top: auto;">
-        <div style="font-size: 0.8rem; color: #6ee7b7; text-align:center; opacity:0.6; font-weight: 600;">UAS Data Science 2026</div>
+        <div class="footer-text" style="font-size: 0.8rem; color: #6ee7b7; text-align:center; opacity:0.6; font-weight: 600;">UAS Data Science 2026</div>
     </div>
     <div class="content">
         {% block content %}{% endblock %}

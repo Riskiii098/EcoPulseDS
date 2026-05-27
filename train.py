@@ -1,3 +1,8 @@
+import sys
+import io
+# Mencegah crash encoding emoji dari library mlflow di Windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
 import os
 import pandas as pd
 import numpy as np # pyright: ignore [missing-import]

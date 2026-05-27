@@ -12,8 +12,20 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Push to Hugging Face Hub
+      - name: Install Dependencies
+        run: pip install huggingface_hub
+      - name: Push to Hugging Face Hub via API
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push --force https://Riskiii:$HF_TOKEN@huggingface.co/spaces/Riskiii/EcoPulseDS main
+          python -c "
+          import os
+          from huggingface_hub import HfApi
+          api = HfApi(token=os.environ['HF_TOKEN'])
+          api.upload_folder(
+              folder_path='.',
+              repo_id='Riskiii/EcoPulseDS',
+              repo_type='space',
+              ignore_patterns=['.git*', '.github/*']
+          )
+          "

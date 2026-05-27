@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Interactive Dashboard</h1>
+<p class="page-subtitle">Eksplorasi kerentanan wilayah secara spasial dan temporal melalui Google Looker Studio.</p>
+
+<div class="card" style="padding: 0; overflow: hidden; height: 600px;">
+    <!-- Ganti src dengan URL Looker asli Anda -->
+    <iframe src="https://lookerstudio.google.com/embed/reporting/00000000-0000-0000-0000-000000000000/page/1M" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+</div>
+
+<div class="card">
+    <h3>Panduan Interpretasi Anomali</h3>
+    <ul style="padding-left: 20px;">
+        <li style="margin-bottom: 10px;"><strong>Anomali DOB Papua:</strong> Lonjakan kemiskinan di provinsi DOB Papua (misal: Papua Pegunungan) mulai 2023 disebabkan oleh tingginya biaya logistik udara yang memicu inflasi lokal.</li>
+        <li style="margin-bottom: 10px;"><strong>Kepulauan Bangka Belitung:</strong> Garis kemiskinan perdesaan seringkali melampaui perkotaan akibat hambatan distribusi barang antar-pulau kecil menuju pelosok.</li>
+        <li>Manfaatkan <strong>Filter Data</strong> pada menu dashboard untuk membandingkan provinsi-provinsi di dalam satu kepulauan yang sama agar analisis lebih relevan.</li>
+    </ul>
+</div>
+{% endblock %}

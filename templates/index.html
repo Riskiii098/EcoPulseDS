@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Eco-Pulse Indonesia</h1>
+<p class="page-subtitle">Policy Simulator Kerentanan Biaya Hidup 🇮🇩</p>
+
+<div class="grid-2">
+    <div class="card">
+        <h3>Latar Belakang Proyek</h3>
+        <p>
+        Kemiskinan dan kerentanan biaya hidup adalah isu multisektoral yang tidak bisa diselesaikan hanya dengan melihat satu indikator.
+        Proyek <strong>Eco-Pulse Indonesia</strong> dirancang untuk membantu pembuat kebijakan memahami dampak pergerakan indikator makroekonomi terhadap fluktuasi Garis Kemiskinan.
+        </p>
+    </div>
+    
+    <div class="card">
+        <h3>Metodologi Data BPS</h3>
+        <p>
+        Dataset bersumber dari BPS RI (2021-2025).<br><br>
+        <strong>Tantangan Data: Daerah Otonomi Baru (DOB) Papua</strong><br>
+        Kami menerapkan <strong>Imputasi Data Administratif Induk</strong>. Nilai makroekonomi DOB Papua sebelum tahun pembentukan diimputasi menggunakan data historis dari provinsi induk asalnya (Papua dan Papua Barat).
+        </p>
+    </div>
+</div>
+<div class="card">
+    <h3>Urgensi Kebijakan Logistik & Bansos</h3>
+    <p>
+    Melalui simulasi cerdas berbasis <em>Machine Learning</em>, Bappenas & Kemensos dapat memprediksi dampak perubahan ekonomi terhadap tingkat daya beli. Jika diprediksi akan terjadi lonjakan Garis Kemiskinan yang ekstrem di suatu wilayah, pemerintah dapat mengambil langkah taktis: merelokasi distribusi Bantuan Sosial (Bansos) dengan cepat, atau mengintervensi stabilitas harga pangan secara preventif.
+    </p>
+</div>
+{% endblock %}

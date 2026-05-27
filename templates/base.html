@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Pulse Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Deep Forest Green Background */
+            --bg-color: #022c22;
+            --sidebar-bg: #064e3b;
+            /* Translucent Glass Green Cards */
+            --card-bg: rgba(6, 78, 59, 0.5);
+            --border-color: rgba(52, 211, 153, 0.2);
+            /* Light Green / Mint text for high contrast */
+            --text-main: #ecfdf5;
+            --text-muted: #a7f3d0;
+            /* Vibrant Greens for Buttons and Highlights */
+            --primary-color: #10b981;
+            --primary-hover: #34d399;
+        }
+        body {
+            margin: 0; font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color); color: var(--text-main);
+            min-height: 100vh; display: flex; line-height: 1.6;
+        }
+        /* Layout */
+        .sidebar {
+            width: 260px; background: var(--sidebar-bg); border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem; box-sizing: border-box; display: flex; flex-direction: column;
+            position: fixed; height: 100vh; z-index: 10;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+        }
+        .content {
+            margin-left: 260px; flex: 1; padding: 3rem 4rem;
+            box-sizing: border-box; max-width: 1200px;
+        }
+        /* Typography */
+        h1, h2, h3, h4 { color: #f0fdf4; font-weight: 700; margin-top: 0; margin-bottom: 1rem;}
+        .page-title { 
+            font-size: 2.5rem; margin-bottom: 0.5rem; 
+            color: var(--primary-hover); font-weight: 800; 
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 30px rgba(52, 211, 153, 0.3);
+        }
+        .page-subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; font-weight: 300;}
+        
+        /* Components */
+        .card {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 28px; margin-bottom: 24px;
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .card:hover { 
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4); 
+            border-color: rgba(52, 211, 153, 0.5);
+            transform: translateY(-2px);
+        }
+        .nav-link {
+            color: var(--text-muted); text-decoration: none; padding: 12px 16px;
+            border-radius: 10px; margin-bottom: 8px; display: flex; align-items: center;
+            font-weight: 500; transition: all 0.2s ease;
+        }
+        .nav-link::before {
+            content: ''; display: inline-block; width: 10px; height: 10px;
+            border-radius: 50%; background-color: var(--primary-hover);
+            margin-right: 12px; transition: background-color 0.2s ease;
+            box-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
+        }
+        .nav-link:hover { 
+            background: rgba(52, 211, 153, 0.1); color: #f0fdf4; 
+        }
+        .nav-link:hover::before {
+            background-color: var(--bg-color);
+            box-shadow: none;
+        }
+        .nav-link.active { 
+            background: linear-gradient(90deg, var(--primary-color), #059669); 
+            color: #022c22; font-weight: 700; 
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+        .nav-link.active::before {
+            background-color: #022c22;
+            box-shadow: none;
+        }
+        hr { border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        
+        /* Alerts */
+        .alert { 
+            padding: 20px; border-radius: 12px; margin-top: 24px; display: none; 
+            border-left: 5px solid; background: rgba(2, 44, 34, 0.8);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .alert-danger { border-color: #ef4444; color: #fca5a5; }
+        .alert-warning { border-color: #f59e0b; color: #fcd34d; }
+        .alert-success { border-color: #10b981; color: #6ee7b7; }
+        .alert-info { border-color: #3b82f6; color: #93c5fd; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 style="color: var(--primary-hover); margin-bottom: 1rem; font-size: 1.8rem; text-align:center; font-weight: 800;">Eco-Pulse</h2>
+        <hr style="margin: 1rem 0;">
+        <span style="font-size: 0.75rem; color: #6ee7b7; margin-bottom: 0.75rem; display: block; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; opacity:0.8;">Navigasi</span>
+        <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Beranda</a>
+        <a href="/dashboard" class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard Area</a>
+        <a href="/simulator" class="nav-link {% if request.path == '/simulator' %}active{% endif %}">ML Simulator</a>
+        <hr style="margin-top: auto;">
+        <div style="font-size: 0.8rem; color: #6ee7b7; text-align:center; opacity:0.6; font-weight: 600;">UAS Data Science 2026</div>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
